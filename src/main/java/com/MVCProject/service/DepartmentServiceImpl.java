@@ -6,20 +6,31 @@ import java.util.Optional;
 import com.MVCProject.model.DepartmentModel;
 import com.MVCProject.repository.DepartmentRepositorymp;
 
-public class DepartmentServiceImpl implements DepartmentService{
-	DepartmentRepositorymp addDepartmentRepoImp = new DepartmentRepositorymp();
+public class DepartmentServiceImpl implements DepartmentService {
+	DepartmentRepositorymp departmentRepoImp = new DepartmentRepositorymp();
+
 	@Override
 	public boolean addDepartmentService(DepartmentModel model) {
-		return addDepartmentRepoImp.isAddedDepartment(model);
+		return departmentRepoImp.isAddedDepartment(model);
 	}
+
 	@Override
 	public Optional<List<DepartmentModel>> getAllDepts() {
-		// TODO Auto-generated method stub
-		return addDepartmentRepoImp.getAllDepartments();
+
+		return departmentRepoImp.getAllDepartments();
 	}
+
 	@Override
 	public boolean deleteDepartmentService(int id) {
-		// TODO Auto-generated method stub
-		return addDepartmentRepoImp.idDeletedDepartment(id);
+
+		return departmentRepoImp.idDeletedDepartment(id);
 	}
+
+	@Override
+	public boolean updateDepartmentService(DepartmentModel model) {
+		// TODO Auto-generated method stub
+		return departmentRepoImp.idUpdatedDepartment(model);
+	}
+
+	 
 }

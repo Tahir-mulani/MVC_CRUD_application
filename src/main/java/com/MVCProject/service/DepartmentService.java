@@ -7,6 +7,10 @@ import com.MVCProject.model.DepartmentModel;
 
 public interface DepartmentService {
 	public boolean addDepartmentService(DepartmentModel model);
+
 	public Optional<List<DepartmentModel>> getAllDepts();
+
 	public boolean deleteDepartmentService(int id);
+
+	public boolean updateDepartmentService(DepartmentModel model);
 }

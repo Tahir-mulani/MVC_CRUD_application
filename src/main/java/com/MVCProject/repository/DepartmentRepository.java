@@ -9,4 +9,5 @@ public interface DepartmentRepository {
 	public boolean isAddedDepartment(DepartmentModel model);
 	public Optional<List<DepartmentModel>> getAllDepartments();
 	public boolean idDeletedDepartment(int id);
+	public boolean idUpdatedDepartment(DepartmentModel model);
 }

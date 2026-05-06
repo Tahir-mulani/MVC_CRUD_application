@@ -21,22 +21,28 @@ public class UpdateDepartmentController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String department = request.getParameter("DeptName");
 		
+		String did = request.getParameter("Id");
+		Optional<Integer> o = Optional.empty();
+		try {
+			o = Optional.of(Integer.parseInt(did));
+			
+		} catch (NumberFormatException e) {
+			System.out.println("Error is "+e);
+		}
+		
+		
+		
 		RequestDispatcher r = request.getRequestDispatcher("dashboard.html");
 		r.include(request, response);
 		out.println("<h1 class='text-center'>Update Department</h1>");
 		out.println("<div class='container bg-dark mt-5 p-5'>");
 		out.println("<form action='editupdatedepartment' method='post'>");
 
-		// 🔹 Department ID (rottenly)
-		/*out.println("<div class='mb-3'>");
-		out.println("<label class='form-label text-white'>SR NO.</label>");
-		out.println("<input type='text' name='deptId' class='form-control' value='" + n + "'>");
-		out.println("</div>");
-*/
 		// 🔹 Department Name
 		out.println("<div class='mb-3'>");
 		out.println("<label class='form-label text-white'>Department Name</label>");
-		out.println("<input type='text' name='deptName' class='form-control' value='" + department + "'>");
+		out.println("<input type='hidden' name='deptid' class='form-control' value='" + o.get() + "'>");
+		out.println("<input type='text' name='deptname' class='form-control' value='" + department + "'>");
 		out.println("</div>");
 
 		// 🔹 Submit button

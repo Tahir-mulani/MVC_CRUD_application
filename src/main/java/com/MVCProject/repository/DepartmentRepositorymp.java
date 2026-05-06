@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.modelmbean.ModelMBean;
+
 import com.MVCProject.model.DepartmentModel;
 
 public class DepartmentRepositorymp extends DBConnection implements DepartmentRepository {
@@ -58,6 +60,20 @@ public class DepartmentRepositorymp extends DBConnection implements DepartmentRe
 		}
 
 		
+	}
+
+	@Override
+	public boolean idUpdatedDepartment(DepartmentModel model) {
+		try {
+			p = con.prepareStatement("update department SET dname=? where did=?");
+			p.setString(1,model.getDname());
+			p.setInt(2,model.getDid());
+			return p.executeUpdate() > 0 ? true : false;
+
+		} catch (SQLException e) {
+			System.out.println("error is " + e);
+			return false;
+		}
 	}
 
 }
