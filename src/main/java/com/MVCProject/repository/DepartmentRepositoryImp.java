@@ -9,7 +9,7 @@ import javax.management.modelmbean.ModelMBean;
 
 import com.MVCProject.model.DepartmentModel;
 
-public class DepartmentRepositorymp extends DBConnection implements DepartmentRepository {
+public class DepartmentRepositoryImp extends DBConnection implements DepartmentRepository {
 	List<DepartmentModel> deptList;
 
 	@Override
@@ -39,10 +39,10 @@ public class DepartmentRepositorymp extends DBConnection implements DepartmentRe
 				dModel.setDname(rs.getString(2));
 				deptList.add(dModel);
 			}
-			return Optional.ofNullable(deptList);
+			return Optional.of(deptList);
 		} catch (Exception e) {
 			System.out.println("Error is "+e);
-			return null;
+			return Optional.empty();
 		}
 		 
 	}

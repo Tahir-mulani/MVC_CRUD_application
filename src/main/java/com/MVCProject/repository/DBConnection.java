@@ -8,13 +8,21 @@ public class DBConnection {
 	public DBConnection() {
 		try {
 		 Class.forName("com.mysql.cj.jdbc.Driver");
-		 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/CRUD_APP","root","7083560700");
-		  
+		 con = DriverManager.getConnection(
+				 "jdbc:mysql://localhost:3306/CRUD_APP",
+				 "root",
+				 "7083560700"
+				);
+		 
+		 if(con != null)
+		 {
+			 System.out.println("connected");
+		 } 
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error is "+e);
-			System.out.println("Error in driver class connection");
+			System.out.println("Connection failed"); 
+			e.printStackTrace();
 		}
 	}
 }

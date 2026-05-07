@@ -43,7 +43,7 @@ public class EditUpdateDepartmentController extends HttpServlet {
 				out.println("<html><body><script>" + "alert('Department Updated Successfully....!');"
 						+ "window.location = 'dashboard.html';" + "</script></body></html>");
 			} else {
-				out.println("<html><body><script>" + "alert('Some Went Wrong....?'); "
+				out.println("<html><body><script>" + "alert('Something Went Wrong....?'); "
 
 						+ "window.location = 'dashboard.html'</script></body></html>");
 			}

@@ -27,7 +27,7 @@ public class DeleteDepartmentContoller extends HttpServlet {
 					+ "window.location = 'viewdepartment';" + "</script></body></html>");
 		} else {
 
-			out.println("<html><body><script>" + "alert('Some Went Wrong....?'); "
+			out.println("<html><body><script>" + "alert('Something Went Wrong....?'); "
 					+ "window.location = 'dashboard.html'</script></body></html>");
 		}
 

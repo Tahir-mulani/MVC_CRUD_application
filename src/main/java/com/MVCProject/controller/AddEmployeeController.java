@@ -1,5 +1,6 @@
 package com.MVCProject.controller;
 
+import com.MVCProject.model.DepartmentModel;
 import com.MVCProject.model.EmployeeModel;
 import com.MVCProject.service.*;
 
@@ -11,7 +12,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Optional;
+
+import javax.management.modelmbean.ModelMBean;
 
 /**
  * Servlet implementation class AddEmployee
@@ -24,58 +28,99 @@ public class AddEmployeeController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("dashboard.html");
 		requestDispatcher.include(request, response);
-		out.println("<h1 class='text-center'>Add New Employee</h1>");
-		out.println("<form action='' method='post'>" + "<div class='container mt-5 bg-dark p-5'>" +
+		EmployeeService emplService = new EmployeeServiceImp();
 
-				"  <div class='row mb-3'>" + "    <div class='col-md-6'>"
-				+ "      <label class='form-label'>Employee Name</label>"
-				+ "      <input type='text' class='form-control' name='name' placeholder='Enter Name'>" + "    </div>" +
+		out.println("<h1 class='text-center mt-4'>Add New Employee</h1>");
 
-				"  <div class='col-md-6'>" + "    <label class='form-label'>Department</label>"
-				+ "    <select class='form-control' name='deptId'>");
-		out.println("<option value=''>-- Select Department --</option>");
-		out.println("<option value='1'>HR</option>"
-				+ "      <option value='2'>IT</option>" + "      <option value='3'>Finance</option>"
-				+ "      <option value='4'>Sales</option>" + "    </select>" + "  </div>");
+		out.println("<form  name='frm' action='' method='post'>");
 
-		out.println("  <div class='row mb-3'>" + "    <div class='col-md-6'>"
-				+ "      <label class='form-label'>Contact</label>"
-				+ "      <input type='text' class='form-control' value='' name='contact' placeholder='Enter Contact Number'>"
-				+ "    </div>" +
+		out.println("<div class='container mt-5'>");
+		out.println("<div class='row justify-content-center'>");
+		out.println("<div class='col-md-8'>");
 
-				"    <div class='col-md-6'>" + "      <label class='form-label'>Salary</label>"
-				+ "      <input type='text' class='form-control' value = '' name='salary' placeholder='Enter Salary'>"
-				+ "    </div>" + "  </div>" +
+		out.println("<div class='card shadow p-4 bg-dark text-white rounded'>");
 
-				"  <div class='text-center'>"
-				+ "    <button type='submit' name='s' class='btn btn-primary px-4'>Add Employee</button>" + "  </div>" +
+		// Row 1 → Name & Email
+		out.println("<div class='row mb-3'>");
 
-				"</div>" + "</form>");
-		String name = request.getParameter("name");
-		Optional<Integer> salary = Optional.empty();
-		String department = request.getParameter("deptId");
-		String contact = request.getParameter("contact");
-		try {
-			 
-			salary = Optional.of(Integer.parseInt(request.getParameter("salary")));
+		out.println("<div class='col-md-6'>");
+		out.println("<label class='form-label'>Name</label>");
+		out.println("<input type='text' class='form-control' name='name' placeholder='Enter Name'>");
+		out.println("</div>");
 
-			EmployeeModel e = new EmployeeModel();
-			e.setName(name);
-			e.setContact(contact);
-			e.setSalary(salary.orElse(0));
-			EmployeeService employee = new EmployeeServiceImp();
-			boolean result = employee.addEmployee(e);
+		out.println("<div class='col-md-6'>");
+		out.println("<label class='form-label'>Email</label>");
+		out.println("<input type='email' class='form-control' name='email' placeholder='Enter Email'>");
+		out.println("</div>");
+
+		out.println("</div>");
+
+		// Row 2 → Contact & Salary
+		out.println("<div class='row mb-3'>");
+
+		out.println("<div class='col-md-6'>");
+		out.println("<label class='form-label'>Contact</label>");
+		out.println("<input type='text' class='form-control' name='contact' placeholder='Enter Contact Number'>");
+		out.println("</div>");
+
+		out.println("<div class='col-md-6'>");
+		out.println("<label class='form-label'>Salary</label>");
+		out.println("<input type='text' class='form-control' name='salary' placeholder='Enter Salary'>");
+		out.println("</div>");
+
+		out.println("</div>");
+
+		// Row 3 → Department
+		out.println("<div class='row mb-4'>");
+
+		out.println("<div class='col-md-12'>");
+		out.println("<label class='form-label'>Department</label>");
+		out.println("<select name='deptId' class='form-control'>");
+		out.println("<option selected disabled>Select Department</option>");
+
+		List<DepartmentModel> deptList = emplService.getDeptsForEmployee();
+
+		for (DepartmentModel model : deptList) {
+			out.println("<option value='" + model.getDid() + "'>" + model.getDname() + "</option>");
+		}
+
+		out.println("</select>");
+		out.println("</div>");
+
+		out.println("</div>");
+
+		// Button
+		out.println("<div class='text-center'>");
+		out.println("<button type='submit' name='s' class='btn btn-primary px-5'>Add Employee</button>");
+		out.println("</div>");
+
+		out.println("</div>"); // card
+		out.println("</div>"); // col
+		out.println("</div>"); // row
+		out.println("</div>"); // container
+
+		out.println("</form>");
+
+		String btn = request.getParameter("s");
+
+		if (btn != null) {
+			String Ename = request.getParameter("name");
+			String email = request.getParameter("email");
+			String contact = request.getParameter("contact");
+			int salary = Integer.parseInt(request.getParameter("salary").trim());
+			int deptId = Integer.parseInt(request.getParameter("deptId").trim());
+
+			EmployeeModel model = new EmployeeModel(0,Ename,email,salary,contact,deptId);
+			Boolean result = emplService.addEmployee(model);
+
 			if (result) {
-				out.println("<html><body><script>"
-						+ "alert('Employee Registered Successfully....!'); </script></body></html>");
+				out.println(
+						"<html><body><script>" + "alert('Employee Added Successfully....!');</script></body></html>");
 			} else {
 
 				out.println("<html><body><script>"
-						+ "alert('Some Went Wrong....?'); window.location = 'dashboard.html'</script></body></html>");
+						+ "alert('Something Went Wrong....?'); window.location = 'dashboard.html'</script></body></html>");
 			}
-
-		} catch (Exception er) {
-			System.out.println("Error is " + er);
 		}
 
 	}

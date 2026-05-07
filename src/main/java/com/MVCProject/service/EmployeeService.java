@@ -1,8 +1,16 @@
 package com.MVCProject.service;
 
-import com.MVCProject.model.EmployeeModel;
+import java.util.List;
+import java.util.Optional;
+import com.MVCProject.model.*;
 
 public interface EmployeeService {
 
 	public boolean addEmployee(EmployeeModel model);
+	public Optional<List<DepartmentModel>> getAllDepartmentList(DepartmentService deptService);
+	public List<DepartmentModel> getDeptsForEmployee();
+	public List<Object[]> getAllEmployeeWithDepartment();
+	
+	 
+	
 }

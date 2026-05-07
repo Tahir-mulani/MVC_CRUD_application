@@ -28,6 +28,7 @@ public class AddDepartmentController extends HttpServlet {
 
 				 "  <div class='row justify-content-center'>" +
 				 "    <div class='col-md-6'>" +
+				 
 				 "      <input type='text' class='form-control mb-3' name='dname' value='' placeholder='Enter Department Name'>" +
 
 				 "      <div class='text-center'>" +
@@ -58,7 +59,7 @@ public class AddDepartmentController extends HttpServlet {
 				} else {
 
 					out.println("<html><body><script>"
-							+ "alert('Some Went Wrong....?'); window.location = 'dashboard.html'</script></body></html>");
+							+ "alert('Something Went Wrong....?'); window.location = 'dashboard.html'</script></body></html>");
 				}
 		 }
 		 else

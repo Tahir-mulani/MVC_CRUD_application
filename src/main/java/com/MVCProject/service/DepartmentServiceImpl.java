@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.MVCProject.model.DepartmentModel;
-import com.MVCProject.repository.DepartmentRepositorymp;
+import com.MVCProject.repository.DepartmentRepositoryImp;
 
 public class DepartmentServiceImpl implements DepartmentService {
-	DepartmentRepositorymp departmentRepoImp = new DepartmentRepositorymp();
+	DepartmentRepositoryImp departmentRepoImp = new DepartmentRepositoryImp();
 
 	@Override
 	public boolean addDepartmentService(DepartmentModel model) {

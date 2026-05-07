@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.MVCProject.model.DepartmentModel;
+import com.MVCProject.model.EmployeeModel;
 import com.MVCProject.service.DepartmentService;
 import com.MVCProject.service.DepartmentServiceImpl;
 import com.MVCProject.service.EmployeeService;
@@ -40,6 +41,8 @@ public class ViewEmployeeControl extends HttpServlet {protected void doGet(HttpS
 	out.println("<tr>");
 	out.println("<th>SRNO</th>");
 	out.println("<th>EMPLOYEE NAME</th>");
+	out.println("<th>EMAIL</th>");
+	out.println("<th>EMPLOYEE CONTACT</th>");	
 	out.println("<th>DEPARTMENT NAME</th>");
 	out.println("<th>UPDATE</th>");
 	out.println("<th>DELETE</th>");		
@@ -48,27 +51,20 @@ public class ViewEmployeeControl extends HttpServlet {protected void doGet(HttpS
 
 	// Table body
 	out.println("<tbody>");
-/*
 	EmployeeService empService = new EmployeeServiceImp();
-	Optional<List<DepartmentModel>> o = empService.getAllDepts();
-	if(o.isPresent())
+	List<Object[]> list = empService.getAllEmployeeWithDepartment();
+	int count = 0;
+	for(Object obj[]:list)
 	{
-		List<DepartmentModel> list = o.get();
-		int count = 0;
-		for(DepartmentModel model:list)
-		{
-			++count;
-			out.println("<tr>");
-			out.println("<td>"+count+"</td>");
-			out.println("<td>"+model.getDname()+"</td>");
-			out.println("<td><a href='#' class='text-warning'><i class='bi bi-pencil-square'></i></a></td>");
-			out.println("<td><a href='#' class='text-danger'><i class='bi bi-trash'></i></a></td>");		
-			out.println("</tr>");
-		}
-	}else {
-		
+		++count;
+		out.println("<td>"+count+"</td>");
+		out.println("<td>"+obj[0]+"</td>");
+		out.println("<td>"+obj[1]+"</td>");
+		out.println("<td>"+obj[1]+"</td>");	
+		out.println("<td>"+obj[2]+"</td>");
+		out.println("<td> <a  class='text-warning'><i class='bi bi-pencil-square'></i></a></td>");
+		out.println("<td><a class='text-danger'><i class='bi bi-trash'></i></a></td>");	
 	}
-	 */
 	out.println("</tbody>");
 	out.println("</table>");
 	out.println("</div>");
