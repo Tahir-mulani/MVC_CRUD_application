@@ -7,7 +7,7 @@ import com.MVCProject.model.DepartmentModel;
 import com.MVCProject.model.EmployeeModel;
 import com.MVCProject.repository.EmployeeRepositoryImp;
 
-public class EmployeeServiceImp implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService{
 	EmployeeRepositoryImp empRepo = new EmployeeRepositoryImp();
 	@Override
 	public boolean addEmployee(EmployeeModel model) {
@@ -32,6 +32,11 @@ public class EmployeeServiceImp implements EmployeeService{
 	public List<Object[]> getAllEmployeeWithDepartment() {
 		// TODO Auto-generated method stub
 		return empRepo.getAllEmployeewithDepartments();
+	}
+	@Override
+	public boolean deleteEmployee(int id) {
+		 
+		return false;
 	}
 	 
 

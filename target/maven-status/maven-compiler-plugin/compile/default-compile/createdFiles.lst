@@ -15,5 +15,6 @@ com\MVCProject\controller\AddDepartmentController.class
 com\MVCProject\repository\DepartmentRepository.class
 com\MVCProject\repository\DepartmentRepositoryImp.class
 com\MVCProject\repository\EmployeeRepository.class
+com\MVCProject\controller\DeleteEmployeeController.class
 com\MVCProject\controller\AddEmployeeController.class
 com\MVCProject\service\DepartmentService.class

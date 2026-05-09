@@ -10,6 +10,7 @@ public interface EmployeeService {
 	public Optional<List<DepartmentModel>> getAllDepartmentList(DepartmentService deptService);
 	public List<DepartmentModel> getDeptsForEmployee();
 	public List<Object[]> getAllEmployeeWithDepartment();
+	public boolean deleteEmployee(int id);
 	
 	 
 	

@@ -28,7 +28,7 @@ public class AddEmployeeController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("dashboard.html");
 		requestDispatcher.include(request, response);
-		EmployeeService emplService = new EmployeeServiceImp();
+		EmployeeService emplService = new EmployeeServiceImpl();
 
 		out.println("<h1 class='text-center mt-4'>Add New Employee</h1>");
 

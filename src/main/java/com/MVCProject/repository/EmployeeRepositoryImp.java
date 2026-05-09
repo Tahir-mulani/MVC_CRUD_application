@@ -46,4 +46,17 @@ public class EmployeeRepositoryImp extends DBConnection implements EmployeeRepos
 		}
 	}
 
+	@Override
+	public boolean idDeletedEmployee(int id) {
+		try {
+			p = con.prepareStatement("delete from  Employee where eid =?");
+			p.setInt(1,id);
+			return p.executeUpdate() > 0 ? true : false;
+
+		} catch (SQLException ex) {
+			System.out.println("Error is " + ex);
+			return false;
+		}
+	}
+
 }

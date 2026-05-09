@@ -7,7 +7,8 @@ import com.MVCProject.model.DepartmentModel;
 import com.MVCProject.model.EmployeeModel;
 
 public interface EmployeeRepository {
-	public boolean idAddedEmployee(EmployeeModel model); 
+	public boolean idAddedEmployee(EmployeeModel model);
+	public boolean idDeletedEmployee(int id); 
 	public List<Object[]> getAllEmployeewithDepartments();
 	
 

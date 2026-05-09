@@ -1,6 +1,7 @@
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\AddDepartmentController.java
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\AddEmployeeController.java
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\DeleteDepartmentContoller.java
+D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\DeleteEmployeeController.java
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\EditUpdateDepartmentController.java
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\Login.java
 D:\Servlet_WorkSpace\MVC_CRUD_Application\src\main\java\com\MVCProject\controller\UpdateDepartmentController.java
