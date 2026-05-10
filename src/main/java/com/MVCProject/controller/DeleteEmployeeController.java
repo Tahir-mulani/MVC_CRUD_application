@@ -18,7 +18,7 @@ public class DeleteEmployeeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String n =request.getParameter("delete");
+		String n =request.getParameter("Id");
 		int id = Integer.parseInt(n);
 		 
 		
@@ -26,8 +26,8 @@ public class DeleteEmployeeController extends HttpServlet {
 		EmployeeService empService = new EmployeeServiceImpl();
 		boolean result = empService.deleteEmployee(id);
 		if (result) {
-			out.println("<html><body><script>" + "alert('Department Deleted Successfully....!');"
-					+ "window.location = 'viewdepartment';" + "</script></body></html>");
+			out.println("<html><body><script>" + "alert('Employee Deleted Successfully....!');"
+					+ "window.location = 'viewemployee';" + "</script></body></html>");
 		} else {
 
 			out.println("<html><body><script>" + "alert('Something Went Wrong....?'); "

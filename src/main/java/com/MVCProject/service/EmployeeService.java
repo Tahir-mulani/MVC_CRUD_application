@@ -11,6 +11,7 @@ public interface EmployeeService {
 	public List<DepartmentModel> getDeptsForEmployee();
 	public List<Object[]> getAllEmployeeWithDepartment();
 	public boolean deleteEmployee(int id);
+	public EmployeeModel getEmployeeById(int id);
 	
 	 
 	

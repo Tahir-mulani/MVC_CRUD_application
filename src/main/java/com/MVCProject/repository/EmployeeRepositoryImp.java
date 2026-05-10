@@ -2,6 +2,9 @@ package com.MVCProject.repository;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import javax.management.modelmbean.ModelMBeanAttributeInfo;
+
 import java.util.*;
 import com.MVCProject.model.EmployeeModel;
 import com.mysql.cj.exceptions.CJConnectionFeatureNotAvailableException;
@@ -32,11 +35,11 @@ public class EmployeeRepositoryImp extends DBConnection implements EmployeeRepos
 		try {
 			list = new ArrayList<Object[]>();
 			p = con.prepareStatement(
-					"select e.name,e.email,e.contact,e.salary,d.dname AS department_name from employee e join department d on e.deptid = d.did");
+					"select e.name,e.email,e.contact,e.salary,d.dname AS department_name,e.eid from employee e join department d on e.deptid = d.did");
 			rs = p.executeQuery();
 
 			while (rs.next()) {
-				list.add(new Object[] { rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),rs.getString(5) });
+				list.add(new Object[] { rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),rs.getString(5),rs.getInt(6) });
 			}
 			return list;
 		} catch (Exception e) {
@@ -57,6 +60,29 @@ public class EmployeeRepositoryImp extends DBConnection implements EmployeeRepos
 			System.out.println("Error is " + ex);
 			return false;
 		}
+	}
+
+	@Override
+	public EmployeeModel getEmployeeModel(int id) {
+		try {
+			p = con.prepareStatement("select * from employee  where eid =?");
+			p.setInt(1,id);
+			rs = p.executeQuery();
+			
+			if(rs.next())
+			{
+				EmployeeModel model = new EmployeeModel(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6));
+				return model;
+			}
+			else {
+				return null;
+			}
+
+		} catch (SQLException ex) {
+			System.out.println("Error is " + ex);
+			 return null;
+		}
+		
 	}
 
 }

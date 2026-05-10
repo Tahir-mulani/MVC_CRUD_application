@@ -12,12 +12,7 @@ public class DBConnection {
 				 "jdbc:mysql://localhost:3306/CRUD_APP",
 				 "root",
 				 "7083560700"
-				);
-		 
-		 if(con != null)
-		 {
-			 System.out.println("connected");
-		 } 
+				); 
 		}
 		catch(Exception e)
 		{

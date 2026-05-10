@@ -63,7 +63,7 @@ public class ViewEmployeeControl extends HttpServlet {
 
 		EmployeeService empService = new EmployeeServiceImpl();
 		List<Object[]> list = empService.getAllEmployeeWithDepartment();
-		EmployeeModel empModel = new EmployeeModel();
+		 
 		
 		int count = 0;
 		if (list.isEmpty()) {
@@ -87,14 +87,15 @@ public class ViewEmployeeControl extends HttpServlet {
 				out.println("<td>" + obj[4] + "</td>");
 
 				out.println("<td>");
-				out.println("<a href='' class='btn btn-warning btn-sm'>");
+				out.println("<a name='' href='updateEmployee?Id="+obj[5]+"' class='btn btn-warning btn-sm'>");
 				out.println("<i class='bi bi-pencil-square'></i>");
 				out.println("</a>");
 				out.println("</td>");
 
 				out.println("<td>");
+				 
 				out.println("<a name='delete' href='deleteEmployee?Id="
-						+empModel.getId()+""
+						+obj[5]
 						+ "' class='btn btn-danger btn-sm'>");
 
 				out.println("<i class='bi bi-trash'></i>");

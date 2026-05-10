@@ -36,7 +36,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public boolean deleteEmployee(int id) {
 		 
-		return false;
+		return empRepo.idDeletedEmployee(id);
+	}
+	@Override
+	public EmployeeModel getEmployeeById(int id) {
+		 
+		return empRepo.getEmployeeModel(id);
 	}
 	 
 

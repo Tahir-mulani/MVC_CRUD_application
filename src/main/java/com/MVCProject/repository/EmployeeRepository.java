@@ -10,6 +10,7 @@ public interface EmployeeRepository {
 	public boolean idAddedEmployee(EmployeeModel model);
 	public boolean idDeletedEmployee(int id); 
 	public List<Object[]> getAllEmployeewithDepartments();
+	public EmployeeModel getEmployeeModel(int id);
 	
 
 }
